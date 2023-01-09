@@ -5,10 +5,10 @@
     </header>
 
     <main>
-      <seznam :svetla="svetla" @zmena-mistnosti="nastavDetail($event)" />
+      <seznam :lights="lights" @zmena-mistnosti="setDetail($event)" />
       <!-- komponenta <seznam /> obsahuje seznam všech světel v domě. -->
 
-      <detail :mistnost="svetla[mistnostDetail]" />
+      <detail :mistnost="lights[roomDetail]" />
       <!-- komponenta <detail /> ovládá světlo ve vybrané místnosti domu  -->
     </main>
   </div>
@@ -30,45 +30,45 @@ export default {
     return {
       // v poli svetla je seznam světel
       // každé světlo má název a true/false hodnotu, zda je zapnuté nebo ne
-      svetla: [
+      lights: [
         {
-          nazev: "Obývací pokoj",
-          zapnuto: false,
+          roomName: "Obývací pokoj",
+          switchOn: false,
         },
         {
-          nazev: "Ložnice",
-          zapnuto: true,
+          roomName: "Ložnice",
+          switchOn: true,
         },
         {
-          nazev: "Dětský pokoj",
-          zapnuto: false,
+          roomName: "Dětský pokoj",
+          switchOn: false,
         },
         {
-          nazev: "Koupelna",
-          zapnuto: false,
+          roomName: "Koupelna",
+          switchOn: false,
         },
         {
-          nazev: "Kuchyně",
-          zapnuto: true,
+          roomName: "Kuchyně",
+          switchOn: true,
         },
         {
-          nazev: "Chodba",
-          zapnuto: false,
+          roomName: "Chodba",
+          switchOn: false,
         },
         {
-          nazev: "Záchůdek",
-          zapnuto: false,
+          roomName: "Záchůdek",
+          switchOn: false,
         },
       ],
 
-      mistnostDetail: 0, //počáteční nastavení místnosti v detailu
+      roomDetail: 0, //starting value - room in detail
     };
   },
 
   methods: {
     //mění místnost v detailu při kliknutí na místnost v seznamu místností
-    nastavDetail(index) {
-      return (this.mistnostDetail = index);
+    setDetail(index) {
+      return (this.roomDetail = index);
     },
   },
 };
