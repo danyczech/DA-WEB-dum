@@ -1,85 +1,77 @@
 <template>
   <div id="app">
-
     <header>
       <h1>Chytrý dům</h1>
     </header>
 
     <main>
-      <seznam :svetla="svetla"
-              @zmena-mistnosti="nastavDetail ($event)"/>
+      <seznam :svetla="svetla" @zmena-mistnosti="nastavDetail($event)" />
       <!-- komponenta <seznam /> obsahuje seznam všech světel v domě. -->
 
       <detail :mistnost="svetla[mistnostDetail]" />
       <!-- komponenta <detail /> ovládá světlo ve vybrané místnosti domu  -->
-
     </main>
-
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // import komponent ze složky components
-import Seznam from './components/Seznam.vue'
-import Detail from './components/Detail.vue'
+import Seznam from "./components/Seznam.vue";
+import Detail from "./components/Detail.vue";
 
 export default {
-  
   components: {
-  // registrace naimportovaných komponent
+    // registrace naimportovaných komponent
     seznam: Seznam,
-    detail: Detail
+    detail: Detail,
   },
 
-  data: function() {
+  data: function () {
     return {
       // v poli svetla je seznam světel
       // každé světlo má název a true/false hodnotu, zda je zapnuté nebo ne
       svetla: [
         {
-          nazev: 'Obývací pokoj',
-          zapnuto: false
+          nazev: "Obývací pokoj",
+          zapnuto: false,
         },
         {
-          nazev: 'Ložnice',
-          zapnuto: true
+          nazev: "Ložnice",
+          zapnuto: true,
         },
         {
-          nazev: 'Dětský pokoj',
-          zapnuto: false
+          nazev: "Dětský pokoj",
+          zapnuto: false,
         },
         {
-          nazev: 'Koupelna',
-          zapnuto: false
+          nazev: "Koupelna",
+          zapnuto: false,
         },
         {
-          nazev: 'Kuchyně',
-          zapnuto: true
+          nazev: "Kuchyně",
+          zapnuto: true,
         },
         {
-          nazev: 'Chodba',
-          zapnuto: false
+          nazev: "Chodba",
+          zapnuto: false,
         },
         {
-          nazev: 'Záchůdek',
-          zapnuto: false
-        }
+          nazev: "Záchůdek",
+          zapnuto: false,
+        },
       ],
 
-      mistnostDetail: 0  //počáteční nastavení místnosti v detailu
-    }
+      mistnostDetail: 0, //počáteční nastavení místnosti v detailu
+    };
   },
 
   methods: {
     //mění místnost v detailu při kliknutí na místnost v seznamu místností
-    nastavDetail (index) {
-      return this.mistnostDetail = index;
-    }
-  }
-
-}
+    nastavDetail(index) {
+      return (this.mistnostDetail = index);
+    },
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
